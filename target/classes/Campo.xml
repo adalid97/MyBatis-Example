@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap 
+   PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+   "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap >
+	<select id="getCampo" resultClass="ejemplo.Campo">
+      SELECT 
+          idCampo as idCampo,
+          nombre as nombre,
+          aforo as aforo
+       FROM campo
+	   WHERE idCampo = #valor#
+	</select>
+	
+	<select id="getCampos" resultClass="ejemplo.Campo">
+      SELECT 
+          idCampo as idCampo,
+          nombre as nombre,
+          aforo as aforo
+       FROM campo
+	</select>
+	
+<!-- 	<select id="getHashCoche" resultClass="java.util.Hashtable"> -->
+<!--       SELECT  -->
+<!--           id as id, -->
+<!--           marca as marca, -->
+<!--           modelo as modelo, -->
+<!--           matricula as matricula -->
+<!--        FROM coches -->
+<!-- 	   WHERE id = #valor# -->
+<!-- 	</select> -->
+	
+	<insert id="insertCampo" >
+	   INSERT INTO CAMPO VALUES (
+	   null,
+	   #nombre#,
+	   #aforo#
+	   )
+	</insert>
+	
+	<update id="updateCampo" parameterClass="ejemplo.Campo">
+	   UPDATE CAMPO SET
+          nombre = #nombre#,
+          aforo = #aforo#
+	   WHERE
+	      idCampo=#idCampo#   
+	</update>
+	
+	<delete id="removeCampo">
+	   DELETE FROM CAMPO WHERE idCampo=#valor#
+	</delete>
+	
+</sqlMap>
